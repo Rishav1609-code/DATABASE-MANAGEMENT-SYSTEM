@@ -1,0 +1,1417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Database Management Systems (CS601) – MAKAUT 6th Sem Exam Strategy</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f5f0;
+    --surface: #ffffff;
+    --border: #e9e3d6;
+    --line-soft: #f0ebdf;
+    --ink: #14171e;
+    --ink-soft: #3a4256;
+    --muted: #7c7a72;
+    --primary: #4a3a8c;
+    --primary-soft: rgba(74, 58, 140, 0.08);
+    --accent: #c97b3f;
+    --accent-soft: rgba(201, 123, 63, 0.1);
+    --danger: #b06367;
+    --danger-soft: rgba(176, 99, 103, 0.1);
+    --gold: #d4a14a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.55;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(74,58,140,0.05) 0%, transparent 40%),
+      radial-gradient(circle at 100% 100%, rgba(201,123,63,0.04) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    padding: 80px 0 60px;
+    border-bottom: 1px solid var(--border);
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    border-radius: 999px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .pill svg { width: 14px; height: 14px; }
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 52px;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 20px;
+  }
+  h1 em { font-style: italic; color: var(--primary); }
+  .lede {
+    font-size: 18px;
+    color: var(--ink-soft);
+    max-width: 760px;
+    line-height: 1.5;
+  }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 14px;
+    margin-top: 36px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .meta svg { width: 14px; height: 14px; }
+
+  /* SECTION */
+  section { padding: 70px 0; border-bottom: 1px solid var(--border); }
+  .section-head { margin-bottom: 40px; }
+  .section-eyebrow {
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.08em;
+    color: var(--accent); text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  h2 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  h3 {
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .sub {
+    color: var(--muted);
+    font-size: 15px;
+    max-width: 720px;
+  }
+
+  /* SUBJECT CARD */
+  .subj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 28px 32px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 32px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+  .subj-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 26px;
+    color: var(--primary);
+    margin-bottom: 10px;
+  }
+  .kv {
+    display: grid; grid-template-columns: 130px 1fr; gap: 10px 16px;
+    font-size: 14px;
+    padding: 12px 0;
+    border-top: 1px dashed var(--border);
+  }
+  .kv .k { color: var(--muted); font-weight: 500; }
+  .kv .v { color: var(--ink-soft); font-weight: 500; }
+  .kv .v code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    padding: 2px 8px; border-radius: 4px;
+  }
+  .paper-structure h4 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); margin-bottom: 16px; font-weight: 600;
+  }
+  .ps-row {
+    display: grid; grid-template-columns: 24px 1fr auto; align-items: center;
+    gap: 12px; padding: 10px 0;
+    border-bottom: 1px dashed var(--line-soft);
+    font-size: 14px;
+  }
+  .ps-row:last-child { border-bottom: 0; }
+  .ps-num {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: 12px;
+  }
+  .ps-name { color: var(--ink); font-weight: 500; }
+  .ps-marks { font-family: 'JetBrains Mono', monospace; color: var(--muted); font-size: 13px; }
+
+  /* NOTE */
+  .note {
+    background: rgba(212, 161, 74, 0.08);
+    border-left: 3px solid var(--gold);
+    padding: 16px 20px;
+    border-radius: 0 8px 8px 0;
+    margin-top: 24px;
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .note b { color: var(--gold); }
+
+  /* STATS */
+  .stats {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 18px; margin-top: 32px;
+  }
+  .stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 20px;
+  }
+  .stat-val {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 12.5px; color: var(--muted);
+    margin-top: 6px; text-transform: uppercase; letter-spacing: 0.04em;
+  }
+
+  /* PYQ TABLE */
+  .pyq-table {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  thead { background: linear-gradient(180deg, var(--line-soft), transparent); }
+  th {
+    text-align: left; padding: 16px 20px;
+    font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--muted); font-weight: 600;
+    border-bottom: 1px solid var(--border);
+  }
+  td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  tr:last-child td { border-bottom: 0; }
+  .year-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .y22 { background: rgba(74,58,140,0.1); color: var(--primary); }
+  .y23 { background: rgba(201,123,63,0.12); color: var(--accent); }
+  .y24 { background: rgba(176,99,103,0.12); color: var(--danger); }
+  .qref {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; color: var(--muted);
+    margin-right: 6px;
+  }
+
+  /* HEATMAP */
+  .heatmap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px 28px;
+  }
+  .heat-row {
+    display: grid;
+    grid-template-columns: 240px 1fr 70px;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px dashed var(--line-soft);
+  }
+  .heat-row:last-child { border-bottom: 0; }
+  .heat-name { font-size: 14px; color: var(--ink); font-weight: 500; }
+  .heat-bar {
+    height: 18px; border-radius: 6px;
+    background: var(--line-soft);
+    overflow: hidden;
+    display: flex;
+  }
+  .heat-bar > span { display: block; height: 100%; }
+  .h-3 { background: linear-gradient(90deg, #4a3a8c, #6a5aac); }
+  .h-2 { background: linear-gradient(90deg, #c97b3f, #d99a6a); }
+  .h-1 { background: linear-gradient(90deg, #b06367, #c98689); }
+  .heat-frac {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; color: var(--ink-soft);
+    text-align: right; font-weight: 600;
+  }
+  .heat-legend {
+    display: flex; gap: 20px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line-soft);
+    font-size: 12.5px; color: var(--muted);
+  }
+  .heat-legend .lg { display: inline-flex; align-items: center; gap: 8px; }
+  .heat-legend .sw { width: 14px; height: 14px; border-radius: 3px; }
+
+  /* TOPIC GRID */
+  .topic-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px;
+  }
+  .topic-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    transition: all 0.2s;
+  }
+  .topic-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  }
+  .topic-rank {
+    display: inline-block;
+    font-family: 'DM Serif Display', serif;
+    color: var(--primary);
+    font-size: 28px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .topic-name {
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .topic-where {
+    font-size: 13px; color: var(--muted);
+    line-height: 1.5;
+  }
+  .topic-where b { color: var(--accent); font-weight: 600; }
+
+  /* PREDICTIONS */
+  .pred {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 30px 32px;
+    margin-bottom: 22px;
+  }
+  .pred-head {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 16px;
+  }
+  .pred-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .pred-icon svg { width: 22px; height: 22px; }
+  .pred-title { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--ink); }
+  .pred-prob {
+    margin-left: auto;
+    font-size: 12px; font-weight: 600;
+    padding: 4px 10px; border-radius: 6px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .p-high { background: var(--primary-soft); color: var(--primary); }
+  .p-med  { background: var(--accent-soft); color: var(--accent); }
+  .pred-q {
+    font-size: 15px; color: var(--ink-soft);
+    line-height: 1.55; margin-bottom: 12px;
+  }
+  .pred-q b { color: var(--ink); }
+  .pred-tip {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 13.5px; color: var(--ink-soft);
+  }
+  .pred-tip b { color: var(--accent); }
+
+  /* CHAPTER ACCORDION */
+  .ch-list { display: grid; gap: 14px; }
+  .ch {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .ch-head {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 24px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .ch-num {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: 'DM Serif Display', serif;
+    font-size: 18px;
+  }
+  .ch-name {
+    font-size: 16px; font-weight: 600; color: var(--ink);
+    flex: 1;
+  }
+  .ch-weight {
+    font-size: 12.5px; color: var(--muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .ch-toggle {
+    color: var(--muted);
+    transition: transform 0.2s;
+  }
+  .ch.open .ch-toggle { transform: rotate(180deg); }
+  .ch-body {
+    display: none;
+    padding: 0 24px 22px 76px;
+    font-size: 14px; color: var(--ink-soft);
+    line-height: 1.6;
+  }
+  .ch.open .ch-body { display: block; }
+  .ch-body ul { list-style: none; }
+  .ch-body li {
+    padding: 6px 0;
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .ch-body li::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--primary); margin-top: 8px; flex-shrink: 0;
+  }
+  .ch-body b { color: var(--ink); font-weight: 600; }
+
+  /* STUDY PLAN */
+  .plan {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+  }
+  .day {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .day-tag {
+    display: inline-block;
+    font-size: 11.5px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .day-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 20px; color: var(--ink);
+    margin-bottom: 14px;
+  }
+  .day ul { list-style: none; }
+  .day li {
+    font-size: 14px; color: var(--ink-soft);
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .day li::before {
+    content: ""; position: absolute; left: 0; top: 13px;
+    width: 8px; height: 8px;
+    border: 2px solid var(--primary);
+    border-radius: 2px;
+    transform: rotate(45deg);
+  }
+
+  /* TIPS */
+  .tip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .tip {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px;
+  }
+  .tip-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 28px;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .tip-h {
+    font-size: 15px; font-weight: 600; color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .tip-b { font-size: 13.5px; color: var(--muted); line-height: 1.55; }
+
+  /* SUMMARY */
+  .summary {
+    background: linear-gradient(135deg, #2d2358 0%, #4a3a8c 100%);
+    color: white;
+    border-radius: 22px;
+    padding: 50px 48px;
+    margin: 40px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .summary::before {
+    content: ""; position: absolute;
+    top: -100px; right: -100px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .summary h2 { color: white; }
+  .summary .sub { color: rgba(255,255,255,0.7); }
+  .summary-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    margin-top: 32px;
+  }
+  .summary-item {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .summary-item h4 {
+    color: rgba(255,255,255,0.6);
+    font-size: 12px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 8px;
+  }
+  .summary-item p {
+    color: white;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* FORMULA CARDS */
+  .formula-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 12px 0;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--primary);
+  }
+  .formula-card .label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 6px;
+  }
+
+  footer {
+    padding: 40px 0;
+    text-align: center;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 800px) {
+    h1 { font-size: 36px; }
+    h2 { font-size: 28px; }
+    .subj-card, .topic-grid, .plan, .summary-grid, .tip-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .ch-body { padding-left: 24px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+      Exam Strategy Report
+    </span>
+    <h1>Database Management <em>Systems — CS601</em><br/>6th Sem, MAKAUT</h1>
+    <p class="lede">
+      A complete analysis of your 3 years of PYQs (2022-23, 2023-24, 2024-25) and the WBUT/MAKAUT
+      DBMS organizer. Built from real questions — the patterns here show exactly what to study
+      for the upcoming semester exam.
+    </p>
+    <div class="meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Paper Code: PCC-CS601 / PCC-CS603 / PCCAI601 / PCCCS601</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 Hours • 70 Marks</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> UPID: 006577</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="stat-val">3</div>
+        <div class="stat-label">PYQ Papers Analyzed</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">9</div>
+        <div class="stat-label">Chapters in Organizer</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">~30</div>
+        <div class="stat-label">Unique Topics Mapped</div>
+      </div>
+      <div class="stat">
+        <div class="stat-val">5</div>
+        <div class="stat-label">Days Study Plan</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUBJECT -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">01 — Paper Overview</div>
+      <h2>What is the paper actually about?</h2>
+      <p class="sub">Before diving into the analysis, here's the structure of the paper and how marks are distributed — this is identical across all 3 years.</p>
+    </div>
+
+    <div class="subj-card">
+      <div>
+        <div class="subj-title">Database Management Systems</div>
+        <p style="color: var(--ink-soft); font-size: 14.5px; margin-bottom: 16px;">
+          B.Tech 6th Semester, MAKAUT. The paper code 006577 stays constant across the 3 years you shared.
+          The exam covers both theory (ER model, normalization, transactions) and practical (SQL/RA queries,
+          B-Tree insertions).
+        </p>
+        <div class="kv">
+          <span class="k">Paper Code</span><span class="v"><code>PCC-CS601 / PCC-CS603</code></span>
+          <span class="k">Full Marks</span><span class="v">70</span>
+          <span class="k">Time</span><span class="v">3 Hours</span>
+          <span class="k">UPID</span><span class="v"><code>006577</code></span>
+          <span class="k">Group A</span><span class="v">10 VSA × 1 mark = 10 (ans any 10 of 12)</span>
+          <span class="k">Group B</span><span class="v">3 SA × 5 marks = 15 (answer any 3 of 5)</span>
+          <span class="k">Group C</span><span class="v">3 LA × 15 marks = 45 (answer any 3 of 5)</span>
+        </div>
+        <div class="note">
+          <b>Heads up:</b> 2022-23 and 2023-24 papers used <b>MCQ format</b> for Group A (with 4 options each), while 2024-25 went back to <b>fill-in-the-blank / direct answer</b>. Prepare for both — if MCQ comes, knowing the concept deeply helps you eliminate options.
+        </div>
+      </div>
+      <div class="paper-structure">
+        <h4>Question Paper Pattern</h4>
+        <div class="ps-row">
+          <span class="ps-num">A</span>
+          <span class="ps-name">Very Short Answer (VSA / MCQ)</span>
+          <span class="ps-marks">10 × 1 = 10</span>
+        </div>
+        <div class="ps-row">
+          <span class="ps-num">B</span>
+          <span class="ps-name">Short Answer (SA)</span>
+          <span class="ps-marks">3 × 5 = 15</span>
+        </div>
+        <div class="ps-row">
+          <span class="ps-num">C</span>
+          <span class="ps-name">Long Answer (LA)</span>
+          <span class="ps-marks">3 × 15 = 45</span>
+        </div>
+        <div class="ps-row" style="border: 0; padding-top: 14px;">
+          <span class="ps-num" style="background: var(--accent-soft); color: var(--accent);">★</span>
+          <span class="ps-name" style="font-size: 13px; color: var(--muted);">Total = 70 marks • Pick best options to maximise score</span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PYQ COMPARISON -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">02 — PYQ Comparison</div>
+      <h2>Same paper, 3 years side-by-side</h2>
+      <p class="sub">All three papers are DBMS (006577). The structure stays identical, but the *questions* rotate. Look at the right column — many topics reappear in different years.</p>
+    </div>
+
+    <div class="pyq-table">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 110px;">Year</th>
+            <th style="width: 100px;">Paper No.</th>
+            <th>Highlights — what was asked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="year-tag y22">2022-23</span></td>
+            <td style="color: var(--muted);">I019</td>
+            <td>
+              <span class="qref">VSA</span> Fill in blanks: Metadata, ALTER TABLE command, NTFS, TCL = Transaction Control Language, Consistency property, format of data in DBMS, Isolation, anomaly, Armstrong's axioms, SUBSTRING, 4NF, Checkpoint.<br/>
+              <span class="qref">SA</span> Armstrong's three axioms • Functional dependency &amp; join dependency • Lossless/Lossy decomposition • B+ Tree &amp; B-Tree short notes • Metadata &amp; data dictionary.<br/>
+              <span class="qref">LA</span> DELETE/TRUNCATE/DROP + Update anomalies + DBA functionalities • Query optimization + Lossy/Lossless decomposition (with FDs) + Tuple relational calculus • 3NF decomposition + Strong/Weak entity + Derived attribute • Blocking factor + B-Tree vs B+ Tree indexing + B-Tree of order 4 insertion (65,66,70...) + Hashing techniques • Vertical/Horizontal fragmentation + DDBMS + Web-based DBMS.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="year-tag y23">2023-24</span></td>
+            <td style="color: var(--muted);">I019</td>
+            <td>
+              <span class="qref">VSA</span> MCQs: Rectangles in ER diagram = entity set, Relational algebra fundamental op, Hierarchical schema, Google is not DBMS, SQL Injection type, Granularity = size of data item, DDL for Oracle structures, Data dictionary limitation, Weak entity → identifying set, TCL = Transaction Control Language, SQL Injection types = all of above, Referential integrity.<br/>
+              <span class="qref">SA</span> ACID properties • Locking vs Timestamp protocols • Heuristic-based optimization • Data abstraction + DBA role • Different anomalies with examples.<br/>
+              <span class="qref">LA</span> Supplier/Item ER diagram + B-Tree of order 3 insertion (10,20,30,12,15,35,18,38,8,50) • ACID + Wait-die/Wound-wait + B-Tree with example • Query optimization steps + Granularity of locking + Deadlock avoidance • Short notes: 5NF, view, trigger, recovery, concurrency, 2PL, failures, cursor • Banking transaction 2PL problem + DAC &amp; MAC.
+            </td>
+          </tr>
+          <tr>
+            <td><span class="year-tag y24">2024-25</span></td>
+            <td style="color: var(--muted);">I018</td>
+            <td>
+              <span class="qref">VSA</span> Multivalued attribute, NULL vs zero, Dense indexing, 2PL = Growing + Shrinking phase, RBAC, homogeneous vs heterogeneous DBMS, Strong entity + example, LIKE operator pattern matching, Sparse matrices advantage, Checkpoint in recovery, MAC in security, Replication across locations.<br/>
+              <span class="qref">SA</span> Security mechanisms in database • Data fragmentation types in DDBMS • Generalization &amp; specialization with examples • DROP/TRUNCATE/DELETE differences • JOIN types in SQL.<br/>
+              <span class="qref">LA</span> ACID properties with example + Dirty read with example • DBMS subsystems + DBA security responsibilities • Data abstraction + Extended ER features (generalization/specialization) • Keys in DBMS + Degree of relationship with diagram • Relational algebra + SQL queries on Student/Course/Instructor schema.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- HEATMAP -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">03 — Topic Frequency Heatmap</div>
+      <h2>How many times did each topic appear?</h2>
+      <p class="sub">Based on direct mentions in the 3 PYQs. Topics in the purple band are "almost-guaranteed" — they will almost certainly appear in some form in your exam too.</p>
+    </div>
+
+    <div class="heatmap">
+      <div class="heat-row">
+        <span class="heat-name">ACID Properties</span>
+        <div class="heat-bar"><span class="h-3" style="width: 100%"></span></div>
+        <span class="heat-frac">3/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">DBA (Database Administrator) Role</span>
+        <div class="heat-bar"><span class="h-3" style="width: 100%"></span></div>
+        <span class="heat-frac">3/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">B-Tree / B+ Tree</span>
+        <div class="heat-bar"><span class="h-3" style="width: 100%"></span></div>
+        <span class="heat-frac">3/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">ER Diagram / ER Model</span>
+        <div class="heat-bar"><span class="h-3" style="width: 100%"></span></div>
+        <span class="heat-frac">3/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">DELETE / TRUNCATE / DROP</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Query Optimization</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Concurrency / 2PL / Deadlock</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">SQL / Relational Algebra Queries</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Anomalies (Insert/Update/Delete)</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Data Fragmentation (DDBMS)</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Database Security (DAC / MAC / RBAC)</span>
+        <div class="heat-bar"><span class="h-2" style="width: 66%"></span></div>
+        <span class="heat-frac">2/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Checkpoint / Recovery</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Functional Dependency &amp; Normalization</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Hashing Techniques</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Locking / Timestamp Protocols</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Cursor / View / Trigger</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+      <div class="heat-row">
+        <span class="heat-name">Generalization / Specialization</span>
+        <div class="heat-bar"><span class="h-1" style="width: 33%"></span></div>
+        <span class="heat-frac">1/3</span>
+      </div>
+
+      <div class="heat-legend">
+        <span class="lg"><span class="sw" style="background: linear-gradient(90deg, #4a3a8c, #6a5aac);"></span> 3/3 — Must Prepare</span>
+        <span class="lg"><span class="sw" style="background: linear-gradient(90deg, #c97b3f, #d99a6a);"></span> 2/3 — High Priority</span>
+        <span class="lg"><span class="sw" style="background: linear-gradient(90deg, #b06367, #c98689);"></span> 1/3 — Important Backup</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOST REPEATED -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">04 — Most Repeated Questions</div>
+      <h2>Same idea, different wording — year after year</h2>
+      <p class="sub">These are the questions MAKAUT keeps coming back to. If you nail these, you cover ~60-65% of predictable paper content.</p>
+    </div>
+
+    <div class="topic-grid">
+      <div class="topic-card">
+        <div class="topic-rank">01</div>
+        <div class="topic-name">ACID Properties</div>
+        <div class="topic-where">
+          Appears in <b>2022-23 (VSA + Q8a)</b>, <b>2023-24 (Q2 + Q8a)</b>, <b>2024-25 (Q7a)</b>. Either as a 5-mark SA or part of 15-mark LA. Atomicity, Consistency, Isolation, Durability — with examples each.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">02</div>
+        <div class="topic-name">B-Tree / B+ Tree Indexing + Insertion</div>
+        <div class="topic-where">
+          Appears in <b>all 3 years</b>. 2022-23: full B-Tree of order 4 insertion (65,66,70,71,74,80,91,81,99,82,75,77,89,56). 2023-24: B-Tree of order 3 insertion (10,20,30,12,15,35,18,38,8,50). Know order, splitting, and B+ Tree differences.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">03</div>
+        <div class="topic-name">ER Diagram Construction</div>
+        <div class="topic-where">
+          <b>2023-24 (Q7a)</b> full ER diagram from a real-world problem (Supplier/Item). <b>2024-25 (Q9b)</b> extended ER features (generalization/specialization). <b>2022-23 (Q9b)</b> strong/weak entity. Practice drawing entities, attributes (multivalued, derived, composite), relationships, cardinality.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">04</div>
+        <div class="topic-name">DBA — Role &amp; Responsibilities</div>
+        <div class="topic-where">
+          <b>2022-23 (Q7c)</b>, <b>2023-24 (Q5)</b>, <b>2024-25 (Q8b)</b>. Always 5 marks. Schema definition, security, backup/recovery, performance tuning, user management. Know 6-8 specific functions.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">05</div>
+        <div class="topic-name">SQL + Relational Algebra Queries</div>
+        <div class="topic-where">
+          <b>2022-23 (no direct numerical)</b>, <b>2023-24 (in long Q11)</b>, <b>2024-25 (Q11)</b>. 2024-25 gave a 3-table Student/Course/Instructor schema and asked 6 sub-queries. Practise SELECT with JOIN, GROUP BY, subquery for Nth highest.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">06</div>
+        <div class="topic-name">Concurrency Control — 2PL / Deadlock / Locking</div>
+        <div class="topic-where">
+          <b>2022-23 (Q11a)</b> 2PL with banking transaction. <b>2023-24 (Q3 + Q9c + Q11a)</b> Wait-die, Wound-wait, granularity. 2024-25 implied via transaction properties. Very high chance of re-appearing.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">07</div>
+        <div class="topic-name">Query Optimization</div>
+        <div class="topic-where">
+          <b>2022-23 (Q8a + Q9a)</b> and <b>2023-24 (Q4 + Q9a)</b>. 2 marks for "why needed", 3-5 marks for steps, 5 marks for heuristic-based optimization. Know the steps: query tree, initial, push selections, push projections, join ordering.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">08</div>
+        <div class="topic-name">DELETE vs TRUNCATE vs DROP</div>
+        <div class="topic-where">
+          <b>2022-23 (Q7a)</b> and <b>2024-25 (Q5)</b>. Pure definition + comparison table question. Easy 5 marks. Memorise: DELETE = DML, can rollback, with WHERE; TRUNCATE = DDL, no rollback, removes all rows; DROP = DDL, removes table itself.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">09</div>
+        <div class="topic-name">Functional Dependency &amp; Normalization</div>
+        <div class="topic-where">
+          <b>2022-23 (Q8b + Q9a + Q4)</b> had heavy FD/3NF numericals. 2023-24 lighter. 2024-25 didn't have direct FD but extended features. 2025-26 likely brings back a full decomposition problem — practice 3NF/BCNF decomposition.
+        </div>
+      </div>
+
+      <div class="topic-card">
+        <div class="topic-rank">10</div>
+        <div class="topic-name">Data Fragmentation in DDBMS</div>
+        <div class="topic-where">
+          <b>2022-23 (Q11)</b> Vertical vs Horizontal + DDBMS short note. <b>2024-25 (Q3)</b> types of fragmentation. Almost guaranteed to reappear. Know horizontal (rows split), vertical (columns split), hybrid/mixed.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PREDICTIONS -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">05 — Predicted Questions</div>
+      <h2>What may come in your exam</h2>
+      <p class="sub">Each prediction is grounded in the rotation pattern of the last 3 years. Probability ratings are my best estimate based on the organizer's coverage and PYQ rotation.</p>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v6m0 8v6M4.93 4.93l4.24 4.24m5.66 5.66l4.24 4.24M2 12h6m8 0h6M4.93 19.07l4.24-4.24m5.66-5.66l4.24-4.24"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (likely, 15 marks)</span>
+        <span class="pred-prob p-high">VERY HIGH</span>
+      </div>
+      <p class="pred-q">
+        <b>ER Diagram from a real-world problem</b> — entities, attributes (incl. multivalued, derived, composite), relationships with cardinality, then draw the diagram. (Direct hit 2023-24 Q7a, similar in 2024-25 Q9b.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> Read the problem statement twice. List 3-5 entities first. For each entity, list 3-4 attributes (mark primary key with underline). Identify relationships between entities (1:1, 1:N, M:N). For M:N, introduce a bridge entity. Draw rectangles for entities, ovals for attributes, diamonds for relationships. Connect with lines labelled with cardinality.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3h18v18H3z"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (very likely, 15 marks)</span>
+        <span class="pred-prob p-high">VERY HIGH</span>
+      </div>
+      <p class="pred-q">
+        <b>B-Tree insertion problem</b> with a list of integers + a given order. (Came in 2022-23 Q10B and 2023-24 Q7b — the examiner loves rephrasing this.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> Start with an empty tree, insert one by one. When a leaf overflows (keys > order-1), split and push the middle key up. Continue until root splits (tree grows taller). Practice 2-3 such insertions: order 3, 4, 5. Use a clean drawing showing the tree at each split step.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (very likely, 15 marks)</span>
+        <span class="pred-prob p-high">VERY HIGH</span>
+      </div>
+      <p class="pred-q">
+        <b>Concurrency control numerical</b> — 2PL with a banking transfer scenario. (2022-23 Q11a and 2023-24 Q11a both did this.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> Given T1 and T2 with read/write operations, add lock-X and unlock instructions. 2PL rule: all locks acquired first (growing phase), all locks released later (shrinking phase). Add <code>lock-X(A)</code> before each write, <code>unlock(A)</code> after all reads/writes on A are done. Mention the lock-compatibility matrix.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (very likely, 15 marks)</span>
+        <span class="pred-prob p-high">VERY HIGH</span>
+      </div>
+      <p class="pred-q">
+        <b>SQL + Relational Algebra queries on a given schema</b> — typically 3-4 tables with 6 sub-queries (2-3 marks each). (Direct hit 2024-25 Q11.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> For each sub-query, write the relational algebra first (π, σ, ⋈, ÷ symbols), then the SQL. Common operations: select with WHERE, project columns, JOIN 2-3 tables, GROUP BY with aggregate (COUNT, SUM, AVG), subquery for Nth highest, EXISTS / NOT EXISTS. Practice a 3-table schema (Student/Course/Instructor style) with 5-6 sub-questions.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (medium, 15 marks)</span>
+        <span class="pred-prob p-med">MEDIUM</span>
+      </div>
+      <p class="pred-q">
+        <b>ACID properties with example</b> + Dirty read / Phantom read / Non-repeatable read problem. (2023-24 Q2 + 2024-25 Q7 full form.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> For each of A/C/I/D — 1 line definition + 1 example. Atomicity: "all or nothing" — bank transfer example. Consistency: valid state before/after. Isolation: concurrent transactions don't interfere. Durability: committed data survives crashes. Then define dirty read: T2 reads uncommitted data from T1 that T1 later rolls back. Use a banking scenario to illustrate.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></span>
+        <span class="pred-title">Group B — Short Answer (almost certain, 5 marks)</span>
+        <span class="pred-prob p-high">HIGH</span>
+      </div>
+      <p class="pred-q">
+        <b>DELETE vs TRUNCATE vs DROP</b> with examples. (Came in 2022-23 Q7a and 2024-25 Q5.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> Make a 5-column table: Command | Type (DML/DDL) | Rollback? | Effect | Speed. DELETE = DML, rollback yes, removes rows per WHERE, slow. TRUNCATE = DDL, no rollback, removes all rows, fast. DROP = DDL, no rollback, removes entire table structure + data.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></span>
+        <span class="pred-title">Group C — Long Answer (medium, 15 marks)</span>
+        <span class="pred-prob p-med">MEDIUM</span>
+      </div>
+      <p class="pred-q">
+        <b>Normalization / 3NF decomposition numerical</b> — given R(A,B,C,D,E...) and a set of FDs, decompose into 3NF preserving dependency. (2022-23 Q9a had a 7-mark version with 9 attributes.)
+      </p>
+      <div class="pred-tip"><b>How to answer:</b> Step 1: Find candidate keys using closure of attribute sets. Step 2: For each FD X→Y where X is not a superkey, decompose. Step 3: Remove transitive dependencies. Show each step. End with 3NF relations + verify each is in BCNF. Practice 2-3 such problems — the pattern is the same.</div>
+    </div>
+
+    <div class="pred">
+      <div class="pred-head">
+        <span class="pred-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg></span>
+        <span class="pred-title">Group A — VSA / MCQ (almost certain, 1 mark each)</span>
+        <span class="pred-prob p-high">GUARANTEED</span>
+      </div>
+      <p class="pred-q">
+        <b>10 VSA / MCQ fillers</b> — Definitions, full forms, and concept identifications. Topics likely: TCL (Transaction Control Language), DDL/DML/DCL, ER diagram shapes, 2PL phases, ACID letters, RBAC/DAC/MAC, indexing types, deadlocks.
+      </p>
+      <div class="pred-tip"><b>Memorise:</b> ACID letters, TCL = Transaction Control Language, DDL = Data Definition Language, DML = Data Manipulation Language, DCL = Data Control Language, 2PL phases (Growing + Shrinking), CHECKPOINT, RECOVERY, ER notation (rectangle = entity, oval = attribute, diamond = relationship), Strong vs Weak entity, TCL commands (COMMIT, ROLLBACK, SAVEPOINT).</div>
+    </div>
+  </section>
+
+  <!-- KEY FORMULAS -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">06 — Must-Know Formulae &amp; Rules</div>
+      <h2>The 8 things you must memorise</h2>
+      <p class="sub">These are the high-yield "rote-learn" items — examiners love to test these as VSA or as part of a longer answer.</p>
+    </div>
+
+    <div class="formula-card">
+      <div class="label">Armstrong's Axioms (FD Inference Rules)</div>
+      A1. Reflexivity: If Y ⊆ X, then X → Y<br/>
+      A2. Augmentation: If X → Y, then XZ → YZ<br/>
+      A3. Transitivity: If X → Y and Y → Z, then X → Z
+    </div>
+
+    <div class="formula-card">
+      <div class="label">B-Tree Node Property (Order m)</div>
+      Each node: max (m-1) keys, max m children<br/>
+      Min children = ⌈m/2⌉ (except root)<br/>
+      Split rule: when overflow, middle key goes up, two halves stay
+    </div>
+
+    <div class="formula-card">
+      <div class="label">2PL (Two-Phase Locking) — The Rule</div>
+      <b>Growing phase:</b> acquire locks, no release<br/>
+      <b>Shrinking phase:</b> release locks, no acquire<br/>
+      <b>Strict 2PL:</b> all exclusive locks held till commit/rollback
+    </div>
+
+    <div class="formula-card">
+      <div class="label">Wait-Die vs Wound-Wait (Deadlock Prevention)</div>
+      <b>Wait-Die</b> (older waits, younger dies): if TS(Ti) &lt; TS(Tj), Ti waits; else Ti dies<br/>
+      <b>Wound-Wait</b> (older wounds, younger waits): if TS(Ti) &lt; TS(Tj), Ti wounds Tj; else Ti waits
+    </div>
+
+    <div class="formula-card">
+      <div class="label">ER Diagram Notation</div>
+      Rectangle = Entity | Oval = Attribute | Diamond = Relationship<br/>
+      Double oval = Multivalued | Dashed oval = Derived | Underline = Primary key<br/>
+      Double rectangle = Weak entity | Double diamond = Identifying relationship
+    </div>
+
+    <div class="formula-card">
+      <div class="label">Normalization Progression</div>
+      1NF → no multi-valued attributes<br/>
+      2NF → 1NF + no partial dependency<br/>
+      3NF → 2NF + no transitive dependency<br/>
+      BCNF → 3NF + for every FD X→Y, X is a superkey<br/>
+      4NF → BCNF + no multi-valued dependency<br/>
+      5NF → 4NF + no join dependency
+    </div>
+
+    <div class="formula-card">
+      <div class="label">Fragmentation Types (DDBMS)</div>
+      <b>Horizontal:</b> split by rows (SELECT * FROM T WHERE condition)<br/>
+      <b>Vertical:</b> split by columns (each fragment has different attributes + PK)<br/>
+      <b>Hybrid/Mixed:</b> combination of both
+    </div>
+
+    <div class="formula-card">
+      <div class="label">Database Security Models</div>
+      <b>DAC</b> (Discretionary): owner controls access (GRANT, REVOKE)<br/>
+      <b>MAC</b> (Mandatory): system enforces via security labels (Top Secret, Secret...)<br/>
+      <b>RBAC</b> (Role-Based): access based on user's role (Admin, User, Guest)
+    </div>
+  </section>
+
+  <!-- CHAPTER LIST -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">07 — Chapter-Wise Roadmap</div>
+      <h2>What to study, in what order</h2>
+      <p class="sub">Based on the organizer's 9-chapter structure, weighted by how MAKAUT's exam actually distributes marks. Click each chapter to expand the must-study topics.</p>
+    </div>
+
+    <div class="ch-list">
+      <div class="ch open">
+        <div class="ch-head">
+          <span class="ch-num">1</span>
+          <span class="ch-name">Database System Architecture</span>
+          <span class="ch-weight">~5-7 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>3-schema architecture</b> — Internal, Conceptual, External (with diagram)</li>
+            <li><b>DBMS vs RDBMS vs File System</b> — comparison</li>
+            <li><b>Data Independence</b> — Logical &amp; Physical</li>
+            <li><b>Database languages</b> — DDL, DML, DCL, TCL (with examples of each)</li>
+            <li><b>Data models</b> — Hierarchical, Network, Relational, Object-oriented</li>
+            <li><b>Database users</b> — DBA, Naive, Sophisticated, Casual</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">2</span>
+          <span class="ch-name">Entity-Relationship Model</span>
+          <span class="ch-weight">~12-15 marks (HEAVIEST for Group C)</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Entity, Entity Set, Attributes</b> — types: simple, composite, multivalued, derived, key</li>
+            <li><b>Strong vs Weak entity</b> — identifying relationship, partial key</li>
+            <li><b>Relationship</b> — degree (unary, binary, ternary), cardinality (1:1, 1:N, M:N)</li>
+            <li><b>Participation constraint</b> — total (double line) vs partial</li>
+            <li><b>Extended ER features</b> — generalization, specialization, aggregation, inheritance</li>
+            <li><b>ER diagram drawing practice</b> — at least 3 problems from real-world scenarios</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">3</span>
+          <span class="ch-name">Relational Model</span>
+          <span class="ch-weight">~10-12 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Relational algebra</b> — Select (σ), Project (π), Union, Set Difference, Cartesian Product, Rename (ρ)</li>
+            <li><b>Additional operations</b> — Natural Join, Outer Join, Semi-join, Division</li>
+            <li><b>Tuple relational calculus</b> — {t | P(t)} notation</li>
+            <li><b>Domain relational calculus</b></li>
+            <li><b>Keys</b> — Super, Candidate, Primary, Alternate, Foreign, Composite</li>
+            <li><b>Integrity constraints</b> — Domain, Entity, Referential, Key</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">4</span>
+          <span class="ch-name">SQL (Structured Query Language)</span>
+          <span class="ch-weight">~12-15 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>DDL commands</b> — CREATE, ALTER, DROP, TRUNCATE, RENAME</li>
+            <li><b>DML commands</b> — INSERT, UPDATE, DELETE, SELECT</li>
+            <li><b>DQL</b> — SELECT with WHERE, GROUP BY, HAVING, ORDER BY</li>
+            <li><b>Joins</b> — INNER, LEFT OUTER, RIGHT OUTER, FULL OUTER, CROSS, SELF</li>
+            <li><b>Subqueries</b> — single-row, multi-row, correlated, Nth highest</li>
+            <li><b>Views</b> — CREATE VIEW, updatable views, WITH CHECK OPTION</li>
+            <li><b>Indexes</b> — CREATE INDEX, when to use, types (clustered, non-clustered)</li>
+            <li><b>Aggregate functions</b> — COUNT, SUM, AVG, MIN, MAX</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">5</span>
+          <span class="ch-name">Functional Dependencies &amp; Normalization</span>
+          <span class="ch-weight">~12-15 marks (HEAVIEST for numericals)</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Functional Dependency</b> — X → Y, trivial, non-trivial, closure of F (F+)</li>
+            <li><b>Armstrong's axioms</b> — Reflexivity, Augmentation, Transitivity</li>
+            <li><b>Derived rules</b> — Union, Decomposition, Pseudotransitivity</li>
+            <li><b>Candidate key finding</b> — using attribute closure</li>
+            <li><b>1NF, 2NF, 3NF, BCNF</b> — definitions + examples of each</li>
+            <li><b>4NF, 5NF</b> — multivalued dependencies, join dependencies</li>
+            <li><b>Decomposition</b> — Lossless join (using chase test) &amp; Dependency preserving</li>
+            <li><b>3NF synthesis algorithm</b> — step-by-step decomposition</li>
+            <li><b>Anomalies</b> — Insertion, Update, Deletion (with examples)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">6</span>
+          <span class="ch-name">Storage Strategies &amp; Indexing</span>
+          <span class="ch-weight">~10-12 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>File organization</b> — Heap, Sequential, Hash, Clustered</li>
+            <li><b>Indexing</b> — Primary, Secondary, Dense, Sparse, Multilevel</li>
+            <li><b>B-Tree</b> — properties, insertion with splitting, deletion</li>
+            <li><b>B+ Tree</b> — all data at leaves, sequential access, comparison with B-Tree</li>
+            <li><b>Hashing</b> — Static, Dynamic (Extendible, Linear)</li>
+            <li><b>Query optimization</b> — heuristic-based, cost-based, steps</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">7</span>
+          <span class="ch-name">Transaction Processing</span>
+          <span class="ch-weight">~15-18 marks (HEAVIEST)</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Transaction concepts</b> — Begin, Commit, Rollback, Savepoint</li>
+            <li><b>ACID properties</b> — Atomicity, Consistency, Isolation, Durability (definitions + examples)</li>
+            <li><b>Concurrent execution</b> — problems: Lost update, Dirty read, Unrepeatable read, Phantom read</li>
+            <li><b>Schedules</b> — Serial, Serializable, Conflict serializable, View serializable</li>
+            <li><b>Locking</b> — Shared (S), Exclusive (X), 2PL, Strict 2PL, Conservative 2PL</li>
+            <li><b>Deadlock</b> — Prevention (Wait-Die, Wound-Wait), Detection (Wait-for graph), Recovery</li>
+            <li><b>Timestamp ordering</b> — basic, Thomas' write rule</li>
+            <li><b>Granularity of locking</b> — DB, table, page, tuple, attribute</li>
+            <li><b>Recovery</b> — log-based, checkpoint, ARIES algorithm basics</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">8</span>
+          <span class="ch-name">Database Security</span>
+          <span class="ch-weight">~5-7 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Security mechanisms</b> — Authentication, Authorization, Encryption, Views</li>
+            <li><b>DAC</b> (Discretionary Access Control) — GRANT, REVOKE</li>
+            <li><b>MAC</b> (Mandatory Access Control) — security levels (Top Secret, Secret, Confidential, Unclassified)</li>
+            <li><b>RBAC</b> (Role-Based Access Control) — roles, permissions</li>
+            <li><b>SQL Injection</b> — types, prevention (parameterized queries)</li>
+            <li><b>Database encryption</b> — symmetric, asymmetric, hashing</li>
+            <li><b>Audit trails</b> — tracking access</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="ch">
+        <div class="ch-head">
+          <span class="ch-num">9</span>
+          <span class="ch-name">Advanced Topics (DDBMS, Modern)</span>
+          <span class="ch-weight">~5-8 marks</span>
+          <span class="ch-toggle"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20"><polyline points="6 9 12 15 18 9"/></svg></span>
+        </div>
+        <div class="ch-body">
+          <ul>
+            <li><b>Distributed DBMS</b> — definition, advantages, challenges</li>
+            <li><b>Fragmentation</b> — Horizontal, Vertical, Hybrid (with examples)</li>
+            <li><b>Replication &amp; Allocation</b></li>
+            <li><b>Homogeneous vs Heterogeneous DDBMS</b></li>
+            <li><b>Web-based DBMS</b> — 3-tier architecture, role of middleware</li>
+            <li><b>Object-Oriented DBMS</b> — basic concepts (awareness only)</li>
+            <li><b>NoSQL</b> — types (key-value, document, column, graph) — awareness only</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY PLAN -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">08 — 5-Day Battle Plan</div>
+      <h2>How to use the next 5 days effectively</h2>
+      <p class="sub">Assuming you have 5-6 days before the exam. If you have more, spread each day across two. If less, focus on the High Priority items only.</p>
+    </div>
+
+    <div class="plan">
+      <div class="day">
+        <span class="day-tag">Day 1</span>
+        <div class="day-title">Foundations + ER Model</div>
+        <ul>
+          <li>3-schema architecture, DBMS vs RDBMS, DDL/DML/DCL/TCL with one example each</li>
+          <li>Data models — hierarchical, network, relational, object-oriented (just 1-line each)</li>
+          <li>ER Model — entities, attributes (all 5 types with symbols), strong vs weak entity, identifying relationship</li>
+          <li>Relationships — degree (unary/binary/ternary), cardinality (1:1, 1:N, M:N), participation (total/partial)</li>
+          <li>Draw 2-3 ER diagrams from real-world problems (Library, Hospital, University)</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <span class="day-tag">Day 2</span>
+        <div class="day-title">Relational Model + SQL</div>
+        <ul>
+          <li>Relational Algebra — all 6 fundamental ops + natural join, division</li>
+          <li>Keys — super, candidate, primary, alternate, foreign, composite</li>
+          <li>Integrity constraints — domain, entity, referential, key</li>
+          <li>SQL DDL: CREATE TABLE, ALTER, DROP (with example of each)</li>
+          <li>SQL DML: SELECT with WHERE, JOIN, GROUP BY, HAVING, subquery</li>
+          <li>Practice: 5-6 SELECT queries on a 3-table schema</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <span class="day-tag">Day 3</span>
+        <div class="day-title">Normalization + FD (heaviest numerical chapter)</div>
+        <ul>
+          <li>FD definition, Armstrong's axioms, derived rules</li>
+          <li>Attribute closure algorithm — practice 3 examples</li>
+          <li>Finding candidate keys using closure</li>
+          <li>1NF, 2NF, 3NF, BCNF, 4NF, 5NF definitions with one example each</li>
+          <li>Decomposition: Lossless join (chase test) + Dependency preserving</li>
+          <li>3NF synthesis algorithm — practice 2 problems with 5-7 attributes each</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <span class="day-tag">Day 4</span>
+        <div class="day-title">Storage + Transaction Processing</div>
+        <ul>
+          <li>File organization (heap, sequential, hash, clustered) — 2 lines each</li>
+          <li>B-Tree insertion with splitting — practice 2 problems (order 3 and order 4)</li>
+          <li>B+ Tree vs B-Tree — comparison table</li>
+          <li>ACID properties — definition + example for each (1 paragraph each)</li>
+          <li>Concurrency problems — Lost update, Dirty read, Unrepeatable read, Phantom</li>
+          <li>2PL — growing and shrinking phase, with a banking example</li>
+          <li>Deadlock: Wait-Die, Wound-Wait + Wait-for graph</li>
+        </ul>
+      </div>
+
+      <div class="day">
+        <span class="day-tag">Day 5</span>
+        <div class="day-title">Security + DDBMS + VSA Drill</div>
+        <ul>
+          <li>DAC, MAC, RBAC — 4-line definitions + comparison</li>
+          <li>SQL Injection — types, prevention</li>
+          <li>Fragmentation: Horizontal, Vertical, Hybrid — with one example each</li>
+          <li>Homogeneous vs Heterogeneous DDBMS</li>
+          <li>VSA revision: rewrite all 30+ VSA answers from the 3 PYQs from memory</li>
+          <li>Numerical revision: solve 1 B-Tree insertion + 1 RA query + 1 normalization problem</li>
+          <li>Sleep well, eat well. This is the most underrated exam tip.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXAM TIPS -->
+  <section>
+    <div class="section-head">
+      <div class="section-eyebrow">09 — Exam Hall Tactics</div>
+      <h2>6 things that will save you marks</h2>
+      <p class="sub">The paper is designed to be passed. These tips come from how MAKAUT actually grades — they reward structure and diagrams.</p>
+    </div>
+
+    <div class="tip-grid">
+      <div class="tip">
+        <div class="tip-num">01</div>
+        <div class="tip-h">Always draw ER diagrams</div>
+        <div class="tip-b">Even for theory questions, a small diagram on the side shows the examiner you understood. For full ER problems — use proper shapes (rectangle, oval, diamond) and label cardinality.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">02</div>
+        <div class="tip-h">Comparison tables for "X vs Y"</div>
+        <div class="tip-b">DELETE/TRUNCATE/DROP, B-Tree/B+ Tree, DAC/MAC/RBAC, 2PL/Strict 2PL — all comparison questions reward tables. 5-row table beats 3 paragraphs every time.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">03</div>
+        <div class="tip-h">Number your steps in numericals</div>
+        <div class="tip-b">B-Tree insertion, 3NF decomposition, RA queries — number every step. Even if the final answer is wrong, you get partial marks. Examiners scan for keywords at each step.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">04</div>
+        <div class="tip-h">Skip VSA you don't know</div>
+        <div class="tip-b">Group A is 1 mark each, you pick 10 of 12. Don't waste 5 minutes on a VSA — move on, come back later. Time is your enemy in 3-hour paper.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">05</div>
+        <div class="tip-h">Pick best 3 of 5 in each group</div>
+        <div class="tip-b">You don't have to answer the first 3. Skim all 5 questions in Group B and C, then pick the 3 you know best. Many students answer the easiest 3, not the first 3.</div>
+      </div>
+      <div class="tip">
+        <div class="tip-num">06</div>
+        <div class="tip-h">Banking transaction = 2PL</div>
+        <div class="tip-b">If a banking transfer (T1, T2) appears, immediately recall the 2PL pattern: add lock-X before each write, unlock after all operations. This is in 2 of 3 years — high chance of repeat.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUMMARY -->
+  <section style="border-bottom: 0; padding-bottom: 0;">
+    <div class="summary">
+      <h2>Quick Summary — the bottom line</h2>
+      <p class="sub">If you read nothing else, read this. These are the highest-yield points for the next 3-4 hours of your study.</p>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <h4>Top 5 Topics (must do)</h4>
+          <p>1. ACID Properties with example  2. B-Tree insertion numerical  3. ER Diagram from a problem statement  4. 2PL banking transaction  5. SQL + RA queries on a given schema</p>
+        </div>
+        <div class="summary-item">
+          <h4>Where the marks hide</h4>
+          <p>Group C (45 marks) decides your grade. Group A (10 marks) is for confidence + buffer. Don't spend 2 hours on VSA — that's a common mistake.</p>
+        </div>
+        <div class="summary-item">
+          <h4>Easy 25 marks you should not lose</h4>
+          <p>Group A (10) + 3 of Group B (15) is almost free if you revise the organizer once. That leaves 30 marks for the "hard" Long Answer questions — but you only need 3 of 5, and 2 of them are usually textbook (ACID, B-Tree, DELETE vs TRUNCATE).</p>
+        </div>
+        <div class="summary-item">
+          <h4>Last word of advice</h4>
+          <p>Don't try to learn new things in the last 24 hours. Re-revise the things you already half-know. That's where marks come from. Sleep 7-8 hours the night before. All the best.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>Generated by R!5H4V_V!5HU · 6th Sem MAKAUT · Paper Code 006577 · Database Management Systems (PCC-CS601) · PYQ window: 2022-2025</p>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.ch-head').forEach(h => {
+    h.addEventListener('click', () => {
+      h.parentElement.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
